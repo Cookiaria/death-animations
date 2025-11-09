@@ -754,7 +754,7 @@ private:
         cache->addSpriteFramesWithFile("celeste-revive.plist"_spr);
 
         CCSprite* sprite = CCSprite::createWithSpriteFrame(cache->spriteFrameByName("celeste-revive-1.png"_spr));
-        sprite->setColor({172, 62, 56});
+        sprite->setColor({255, 125, 0});
         sprite->setScale(8.75f);
         sprite->getTexture()->setAliasTexParameters();
         sprite->setPosition(player->getPosition());
@@ -793,7 +793,7 @@ private:
             if (!m_isPreview && m_players.at(sprite) == static_cast<CCNodeRGBA*>(m_playLayer->m_player2))
                 sprite->setColor({125, 253, 255});
             else
-                sprite->setColor({172, 62, 56});
+                sprite->setColor({255, 125, 0});
         }
     }
     
@@ -1101,7 +1101,7 @@ public:
             scheduleOnce(schedule_selector(Celeste::enableDelayedRestart), 0.7f / m_speed);
 
         if (m_isPreview) {
-            m_explosion1 = CelesteExplosion::create(m_delegate->getPlayer(), {15, 0}, {172, 62, 56}, m_speed);
+            m_explosion1 = CelesteExplosion::create(m_delegate->getPlayer(), {15, 0}, {255, 125, 0}, m_speed);
             m_explosion1->setPosition(m_delegate->getPlayer()->getPosition());
             addChild(m_explosion1, 9);
             
@@ -1120,7 +1120,7 @@ public:
         }
         
         PlayerObject* player = m_playLayer->m_player1;
-        ccColor3B color = dashOrb1 ? (dashOrb1->m_objectID == 1704 ? ccc3(0, 255, 0) : ccc3(254, 1, 212)) : ccc3(172, 62, 56);
+        ccColor3B color = dashOrb1 ? (dashOrb1->m_objectID == 1704 ? ccc3(0, 255, 0) : ccc3(254, 1, 212)) : ccc3(255, 125, 0);
 
         m_explosion1 = CelesteExplosion::create(
             player,
@@ -1137,7 +1137,7 @@ public:
         if (!Utils::getSettingBool(Anim::Celeste, "second-player") || !m_playLayer->m_gameState.m_isDualMode) return;
         
         player = m_playLayer->m_player2;
-        color = dashOrb2 ? (dashOrb2->m_objectID == 1704 ? ccc3(0, 255, 0) : ccc3(254, 1, 212)) : ccc3(172, 62, 56);
+        color = dashOrb2 ? (dashOrb2->m_objectID == 1704 ? ccc3(0, 255, 0) : ccc3(254, 1, 212)) : ccc3(255, 125, 0);
         
         m_explosion2 = CelesteExplosion::create(
             player,
