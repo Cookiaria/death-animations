@@ -99,7 +99,7 @@ private:
         //runAction(CCEaseCubeOut::create(CCMoveTo::create(0.41f / m_speed, getPosition() + ccp(cos(angle) * 47.f, sin(angle) * 47.f))));
         
         schedule(schedule_selector(CelesteExplosion::updateBall), 0, kCCRepeatForever, 0);
-        scheduleOnce(schedule_selector(CelesteExplosion::eighthStep), 1.f / 60.f / m_speed);
+        CelesteExplosion::ninthStep(0.0f);
         
         return true;
     }
@@ -151,6 +151,7 @@ private:
         scheduleOnce(schedule_selector(CelesteExplosion::ninthStep), 6.f / 60.f / m_speed);
     }
     void ninthStep(float) {
+        setShaderState("u_fullWhite", 1);
         CCArray* animFrames = CCArray::create();
         CCSpriteFrameCache* cache = CCSpriteFrameCache::get();
         cache->addSpriteFramesWithFile("celeste-explosion.plist"_spr);
@@ -1041,13 +1042,15 @@ private:
             pos.y / m_size.height
         );
 
-        runAction(CCSequence::create(
-            CCDelayTime::create(1.f / 240.f),
-            CallFuncExt::create([this] {
-                schedule(schedule_selector(Celeste::updateShockwave));
-            }),
-            nullptr
-        ));
+        schedule(schedule_selector(Celeste::updateShockwave));
+        
+        //runAction(CCSequence::create(
+        //    CCDelayTime::create(1.f / 240.f),
+        //    CallFuncExt::create([this] {
+        //        schedule(schedule_selector(Celeste::updateShockwave));
+        //    }),
+        //    nullptr
+        //));
     }
 
     void onAnimationEnd() override {
