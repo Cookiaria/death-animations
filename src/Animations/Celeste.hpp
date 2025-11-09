@@ -95,8 +95,8 @@ private:
         
         addChild(m_playerSprite);
         
-        float angle = ccpToAngle(velocity) - M_PI;
-        runAction(CCEaseCubeOut::create(CCMoveTo::create(0.41f / m_speed, getPosition() + ccp(cos(angle) * 47.f, sin(angle) * 47.f))));
+        //float angle = ccpToAngle(velocity) - M_PI;
+        //runAction(CCEaseCubeOut::create(CCMoveTo::create(0.41f / m_speed, getPosition() + ccp(cos(angle) * 47.f, sin(angle) * 47.f))));
         
         schedule(schedule_selector(CelesteExplosion::updateBall), 0, kCCRepeatForever, 0);
         scheduleOnce(schedule_selector(CelesteExplosion::firstStep), 1.f / 60.f / m_speed);
