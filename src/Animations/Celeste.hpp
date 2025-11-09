@@ -1090,7 +1090,7 @@ public:
                 
         m_transitionDelay = m_transitionDelays.contains(m_transition) ? m_transitionDelays.at(m_transition) : 0.f;
         
-        scheduleOnce(schedule_selector(Celeste::playDeathSound), 0.45f / m_speed);
+        Celeste::playDeathSound(0.0f);
 
         if (GameManager::get()->getGameVariable("0026") || m_isPreview)
             scheduleOnce(schedule_selector(Celeste::playTransition), m_transitionDelay / m_speed);
@@ -1149,9 +1149,9 @@ public:
         Utils::setHighestZ(m_explosion2);
     }
     
-    void start() override {
-        Utils::playSound(Anim::Celeste, "predeath-celeste.wav", m_speed, 0.5f);
-    }
+    //void start() override {
+    //    Utils::playSound(Anim::Celeste, "predeath-celeste.wav", m_speed, 0.5f);
+    //}
     
     void end() override {
         if (m_explosion1) {
